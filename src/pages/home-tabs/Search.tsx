@@ -33,8 +33,8 @@ import {
                   <IonImg src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                 </IonAvatar>
                 <IonLabel>
-                  <h2>Connor Smith</h2>
-                  <p>Sales Rep</p>
+                  <h2>Roronoa Zoro</h2>
+                  <p>Chief executive of Sword Industry</p>
                 </IonLabel>
               </IonItem>
               <IonItem>
@@ -42,8 +42,8 @@ import {
                   <IonImg src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                 </IonAvatar>
                 <IonLabel>
-                  <h2>Daniel Smith</h2>
-                  <p>Product Designer</p>
+                  <h2>Monkey D. Luffy</h2>
+                  <p>Chief of Strawhats</p>
                 </IonLabel>
               </IonItem>
               <IonItem>
@@ -51,8 +51,8 @@ import {
                   <IonImg src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                 </IonAvatar>
                 <IonLabel>
-                  <h2>Greg Smith</h2>
-                  <p>Director of Operations</p>
+                  <h2>Shanks</h2>
+                  <p>Chief of Redhair</p>
                 </IonLabel>
               </IonItem>
               <IonItem>
@@ -60,8 +60,8 @@ import {
                   <IonImg src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                 </IonAvatar>
                 <IonLabel>
-                  <h2>Zoey Smith</h2>
-                  <p>CEO</p>
+                  <h2>Gol D Roger</h2>
+                  <p>CEO of Laughtale</p>
                 </IonLabel>
               </IonItem>
             </IonList>

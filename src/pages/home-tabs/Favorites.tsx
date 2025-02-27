@@ -35,7 +35,7 @@ import { call, pin, share, trash } from 'ionicons/icons';
                      <IonAvatar aria-hidden="true" slot="start">
                        <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                      </IonAvatar>
-                     <IonLabel>Zoro</IonLabel>
+                     <IonLabel>Rorono Zoro</IonLabel>
                      <IonIcon aria-hidden="true" icon={call} slot="start"></IonIcon>
                    </IonItem>
                    <IonItemOptions slot="end">
@@ -56,7 +56,7 @@ import { call, pin, share, trash } from 'ionicons/icons';
                      <IonAvatar aria-hidden="true" slot="start">
                        <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                      </IonAvatar>
-                     <IonLabel>Luffy</IonLabel>
+                     <IonLabel>Monkey D. Luffy</IonLabel>
                      <IonIcon aria-hidden="true" icon={call} slot="start"></IonIcon>
                    </IonItem>
                    <IonItemOptions slot="end">
