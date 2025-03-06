@@ -30,8 +30,11 @@ import { personCircleOutline, codeSlashOutline, mailOutline, logoGithub, logoLin
                 {/* Profile Section */}
                 <IonCard>
                     <IonCardHeader className="ion-text-center">
-                        <IonIcon icon={personCircleOutline} style={{ fontSize: '80px', color: '#3880ff' }} />
-                        <IonCardTitle>RipMickel</IonCardTitle>
+                    <img 
+                            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3JmNGgyaWxrcDhlZXZ0OW5od3dsdHhlMGtoc3Zlc3N0Z2RjMzN5ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hJ9ehuvqmJbrgZLAwB/giphy.gif" 
+                            alt="Penguin Developer GIF"
+                            style={{ width: "120px", height: "120px", borderRadius: "50%", marginBottom: "10px", marginLeft: "44%" }}
+                        />                        <IonCardTitle>RipMickel</IonCardTitle>
                         <p>Wanna be App Developer</p>
                     </IonCardHeader>
                     <IonCardContent>
