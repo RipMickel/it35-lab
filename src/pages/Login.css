@@ -1,0 +1,28 @@
+/* Ensure full-page height */
+.ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  /* Center login card */
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  /* Card Styling */
+  .login-card {
+    width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: white;
+  }
+  
