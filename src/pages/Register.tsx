@@ -18,6 +18,9 @@ import {
 import { supabase } from '../utils/supabaseClient';
 import bcrypt from 'bcryptjs';
 
+// GIF URL (Replace this with your own if needed)
+const GIF_URL = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWNyZWlhdW00MDBtcnY3Z3M1ZGtxNm14b2RqeWdrcmppMXFhaTVsYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jKvZYT3pYTy9y/giphy.gif";
+
 // Reusable Alert Component
 const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void }> = ({ message, isOpen, onClose }) => {
   return (
@@ -91,7 +94,6 @@ const Register: React.FC = () => {
     
             setShowSuccessModal(true);
         } catch (err) {
-            // Ensure err is treated as an Error instance
             if (err instanceof Error) {
                 setAlertMessage(err.message);
             } else {
@@ -104,7 +106,23 @@ const Register: React.FC = () => {
     return (
         <IonPage>
             <IonContent className='ion-padding'>
-                <h1>Create your account</h1>
+
+                {/* Circular GIF at the top */}
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+                    <img 
+                        src={GIF_URL} 
+                        alt="Register Animation" 
+                        style={{ 
+                            width: '100px', 
+                            height: '100px', 
+                            borderRadius: '50%',  
+                            objectFit: 'cover',
+                            border: '2px solid #555'
+                        }} 
+                    />
+                </div>
+
+                <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Create Your Account</h1>
 
                 <IonInput label="Username" labelPlacement="stacked" fill="outline" type="text" placeholder="Enter a unique username" value={username} onIonChange={e => setUsername(e.detail.value!)} style={{ marginTop: '15px' }} />
                 <IonInput label="First Name" labelPlacement="stacked" fill="outline" type="text" placeholder="Enter your first name" value={firstName} onIonChange={e => setFirstName(e.detail.value!)} style={{ marginTop: '15px' }} />
@@ -151,8 +169,8 @@ const Register: React.FC = () => {
 
                 {/* Success Modal */}
                 <IonModal isOpen={showSuccessModal} onDidDismiss={() => setShowSuccessModal(false)}>
-                    <IonContent className="ion-padding" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh', textAlign: 'center', marginTop: '35%' }}>
-                        <IonTitle style={{ marginTop: '35%' }}>Registration Successful 🎉</IonTitle>
+                    <IonContent className="ion-padding" style={{ textAlign: 'center', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                        <IonTitle>Registration Successful 🎉</IonTitle>
                         <IonText>
                             <p>Your account has been created successfully.</p>
                             <p>Please check your email address.</p>

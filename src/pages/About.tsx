@@ -29,14 +29,24 @@ import { personCircleOutline, codeSlashOutline, mailOutline, logoGithub, logoLin
             <IonContent fullscreen className="ion-padding">
                 {/* Profile Section */}
                 <IonCard>
-                    <IonCardHeader className="ion-text-center">
-                    <img 
-                            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3JmNGgyaWxrcDhlZXZ0OW5od3dsdHhlMGtoc3Zlc3N0Z2RjMzN5ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hJ9ehuvqmJbrgZLAwB/giphy.gif" 
-                            alt="Penguin Developer GIF"
-                            style={{ width: "120px", height: "120px", borderRadius: "50%", marginBottom: "10px", marginLeft: "44%" }}
-                        />                        <IonCardTitle>RipMickel</IonCardTitle>
-                        <p>Wanna be App Developer</p>
-                    </IonCardHeader>
+                <IonCardHeader className="ion-text-center">
+  <img 
+    src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExamxrNTRnZzdsd2ptazl5OXA3cjhvNnpxMjY1Y3VvanRwMnBxZDhqOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MA2VgqYUmRFK5KlEf9/giphy.gif" 
+    alt="Penguin Developer GIF"
+    style={{
+      width: "120px", // Fixed size for the image
+      height: "120px", // Fixed size for the image
+      borderRadius: "50%", // Circular image
+      marginBottom: "10px", // Space below the image
+      display: "block", // Ensures the image behaves as a block element
+      marginLeft: "auto", // Centers the image horizontally
+      marginRight: "auto" // Centers the image horizontally
+    }}
+  />
+  <IonCardTitle>RipMickel</IonCardTitle>
+  <p>Wanna be App Developer</p>
+</IonCardHeader>
+
                     <IonCardContent>
                     Passionate about building efficient and scalable applications.  
                         Always exploring new technologies and frameworks.  
