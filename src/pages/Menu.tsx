@@ -68,20 +68,7 @@ import EditProfilePage from './EditProfilePage';
                             </IonItem>
                         </IonMenuToggle>
                     ))}
-                     <IonButton routerLink="/it35-lab/app/home" routerDirection="forward" expand="full">
-                            <IonIcon icon={homeOutline} slot="start"> </IonIcon>
-                        Home
-                        </IonButton>
-                           {/*About Button*/}
-                           <IonButton routerLink="/it35-lab/app/about" routerDirection="forward" expand="full">
-                            <IonIcon icon={rocketOutline} slot="start"> </IonIcon>
-                        About
-                        {/*Edit Profile Button*/}
-                        </IonButton>
-                        <IonButton routerLink="/it35-lab/app/profile" routerDirection="forward" expand="full">
-                            <IonIcon icon={rocketOutline} slot="start"> </IonIcon>
-                        Edit Profile
-                        </IonButton>
+                    
                     
                        {/* Logout Button */}
                        <IonButton expand="full" onClick={handleLogout}>
