@@ -12,6 +12,7 @@ import {
  } from '@ionic/react';
  import { logoIonic, } from 'ionicons/icons';
  import { useState } from 'react';
+ import { supabase } from '../utils/supabaseClient';
  
  
   
@@ -24,7 +25,16 @@ const Login: React.FC = () => {
   const [showToast, setShowToast] = useState(false);
 
   const doLogin = async () => {
-    navigation.push('/it35-lab/app', 'forward', 'replace');
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      setErrorMessage(error.message);
+      setShowAlert(true);
+    } else {
+      setShowToast(true); 
+      setTimeout(() => {
+        navigation.push('/it35-lab/app', 'forward', 'replace');
+      }, 300);
+    }
   };
     return (
       <IonPage>
@@ -88,9 +98,7 @@ const Login: React.FC = () => {
                      onIonChange={e => setPassword(e.detail.value!)}
                    ><IonInputPasswordToggle slot="end"></IonInputPasswordToggle></IonInput>
                  </div>
-                 <IonButton style={{
-                   marginTop:'10px'
-                 }}onClick={doLogin} expand="full" shape='round'>
+                 <IonButton onClick={doLogin} expand="full" shape='round'>
                    Login
                  </IonButton>
  
