@@ -32,6 +32,7 @@ import FeedContainer from '../../components/FeedContainer';
         >
           Feed
         </div>
+        <FeedContainer />
         </IonContent>
       </IonPage>
     );
