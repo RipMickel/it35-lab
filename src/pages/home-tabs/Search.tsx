@@ -1,16 +1,24 @@
 import { 
+  IonAvatar,
     IonButtons,
       IonContent, 
       IonHeader, 
+      IonImg, 
+      IonItem, 
+      IonLabel, 
+      IonList, 
       IonMenuButton, 
       IonPage, 
+      IonSearchbar, 
       IonTitle, 
       IonToolbar 
   } from '@ionic/react';
-  
+import SearchContainer from '../../components/SearchContainer';
+
   const Search: React.FC = () => {
-    return (
-      <IonPage>
+
+      return (
+        <IonPage>
         <IonHeader>
           <IonToolbar>
             <IonButtons slot='start'>
@@ -20,17 +28,10 @@ import {
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100%',
-          }}
-        >
-          Search
-        </div>
-        </IonContent>
+          <SearchContainer />
+            <IonList>
+            </IonList>
+          </IonContent>
       </IonPage>
     );
   };

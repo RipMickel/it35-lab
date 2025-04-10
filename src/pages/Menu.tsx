@@ -45,8 +45,19 @@ import Details from './Details';
                             </IonItem>
                         </IonMenuToggle>
                     ))}
-                           {/*Logout Button*/}
-                           <IonButton routerLink="/it35-lab" routerDirection="back" expand="full">
+                     <IonButton routerLink="/it35-lab/app/home" routerDirection="forward" expand="full">
+                            <IonIcon icon={homeOutline} slot="start"> </IonIcon>
+                        Home
+                        </IonButton>
+                           {/*About Button*/}
+                           <IonButton routerLink="/it35-lab/app/about" routerDirection="forward" expand="full">
+                            <IonIcon icon={rocketOutline} slot="start"> </IonIcon>
+                        About
+                        </IonButton>
+                    
+                     {/*Logout Button*/}
+
+                        <IonButton routerLink="/it35-lab" routerDirection="back" expand="full">
                             <IonIcon icon={logOutOutline} slot="start"> </IonIcon>
                         Logout
                         </IonButton>
