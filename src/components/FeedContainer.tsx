@@ -28,8 +28,7 @@ import { useState, useEffect } from 'react';
          setUser(authData.user);
          const { data: userData, error } = await supabase
            .from('users')
-           .select('user_id, username')
-           .eq('user_email', authData.user.email)
+           .select('user_id, username, user_avatar_url')           .eq('user_email', authData.user.email)
            .single();
          if (!error && userData) {
            setUser({ ...authData.user, id: userData.user_id });
@@ -47,8 +46,32 @@ import { useState, useEffect } from 'react';
  
    const createPost = async () => {
      if (!postContent || !user || !username) return;
-     const { data, error } = await supabase.from('posts').insert([{ post_content: postContent, user_id: user.id, username }]).select('*');
-     if (!error && data) setPosts([data[0] as Post, ...posts]);
+      
+     // Fetch avatar URL
+     const { data: userData, error: userError } = await supabase
+       .from('users')
+       .select('user_avatar_url')
+       .eq('user_id', user.id)
+       .single();
+   
+     if (userError) {
+       console.error('Error fetching user avatar:', userError);
+       return;
+     }
+   
+     const avatarUrl = userData?.user_avatar_url || 'https://ionicframework.com/docs/img/demos/avatar.svg';
+   
+     // Insert post with avatar URL
+     const { data, error } = await supabase
+       .from('posts')
+       .insert([
+         { post_content: postContent, user_id: user.id, username, avatar_url: avatarUrl }
+       ])
+       .select('*');
+   
+     if (!error && data) {
+       setPosts([data[0] as Post, ...posts]);
+     }
      setPostContent('');
    };
  
@@ -102,30 +125,25 @@ import { useState, useEffect } from 'react';
                </IonCard>
  
                {posts.map(post => (
-                 <IonCard key={post.post_id} style={{
-                  marginTop:'2rem'
-              }}>
+                  <IonCard key={post.post_id} style={{ marginTop: '2rem' }}>
                    <IonCardHeader>
                    <IonRow>
-                     <IonCol size="1.85">
-                     <IonAvatar>
-                     <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-                   </IonAvatar>
-                     </IonCol>
-                     <IonCol>
-                     <IonCardTitle
-                     style={{
-                         marginTop:'10px'
-                     }}>{post.username}</IonCardTitle>
-                     <IonCardSubtitle>{new Date(post.post_created_at).toLocaleString()}</IonCardSubtitle>
-                     </IonCol>
+                       <IonCol size="1.85">
+                         <IonAvatar>
+                           <img alt={post.username} src={post.avatar_url} />
+                         </IonAvatar>
+                       </IonCol>
+                       <IonCol>
+                         <IonCardTitle style={{ marginTop: '10px' }}>{post.username}</IonCardTitle>
+                         <IonCardSubtitle>{new Date(post.post_created_at).toLocaleString()}</IonCardSubtitle>
+                       </IonCol>
                      </IonRow>
                    </IonCardHeader>
-                  <IonCardContent>
-                  <IonText color="secondary">
-                     <h1>{post.post_content}</h1>
-                   </IonText>
-                  </IonCardContent>
+                   <IonCardContent>
+                     <IonText color="secondary">
+                       <h1>{post.post_content}</h1>
+                     </IonText>
+                   </IonCardContent>
                    <IonFooter>
                      <IonButton fill="clear" onClick={() => startEditingPost(post)}>Edit</IonButton>
                      <IonButton fill="clear" color="danger" onClick={() => deletePost(post.post_id)}>Delete</IonButton>
