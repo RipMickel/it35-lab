@@ -21,7 +21,7 @@ import {
 import { Route, Redirect } from 'react-router';
 import Home from './Home';
 import About from './About';
-import Details from './Details';
+import Details from './Details'; 
 import { useState } from 'react';
 import { supabase } from '../utils/supabaseClient';
 import EditProfile from './EditProfilePage';
