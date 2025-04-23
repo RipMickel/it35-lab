@@ -19,7 +19,7 @@ import { supabase } from '../utils/supabaseClient';
 import bcrypt from 'bcryptjs';
 
 // GIF URL (Replace this with your own if needed)
-const GIF_URL = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWNyZWlhdW00MDBtcnY3Z3M1ZGtxNm14b2RqeWdrcmppMXFhaTVsYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jKvZYT3pYTy9y/giphy.gif";
+const GIF_URL = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHp0YzVzenBwN3MzODd0NzN6Nmk2aTBlNmp0a2RicHJkaTNqa2tjZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6afAyZFRgF1e0fc4HC/giphy.gif";
 
 // Reusable Alert Component
 const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void }> = ({ message, isOpen, onClose }) => {

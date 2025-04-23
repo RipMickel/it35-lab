@@ -40,7 +40,7 @@ const Login: React.FC = () => {
       <IonContent className='ion-padding' fullscreen>
         <div style={{ textAlign: 'center', marginTop: '20vh' }}>
         <img 
-src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXE2bmlkZjM3cTR6c2Q1cjFsa2ZpaXowYmZtN2lpMGE1aHNudTY0bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AD9YKaY2vxTXO/giphy.gif" 
+src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmp1Z3lvY2ZzNXF2bTRkOWZsbHU1ODN3d3E0bHVydGF1aG1pcnoyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13twUEuUnCrEju/giphy.gif" 
 alt="Login Animation" 
 style={{ 
   width: '80px', 
