@@ -24,8 +24,7 @@ import About from './About';
 import Details from './Details';
 import { useState } from 'react';
 import { supabase } from '../utils/supabaseClient';
-import EditProfilePage from './EditProfilePage';
-  
+import EditProfile from './EditProfilePage';
   const Menu: React.FC = () => {
     const navigation = useIonRouter();
      const [showAlert, setShowAlert] = useState(false);
@@ -82,8 +81,7 @@ import EditProfilePage from './EditProfilePage';
                 <Route exact path="/it35-lab/app/home" component={Home} />
                 <Route exact path="/it35-lab/app/home/details" component={Details} />
                 <Route exact path="/it35-lab/app/about" component={About} />
-                <Route exact path="/it35-lab/app/profile" component={EditProfilePage} />
-
+                <Route exact path="/it35-lab/app/profile" component={EditProfile} />
                 <Route exact path="/it35-lab/app">
                     <Redirect to="/it35-lab/app/home"/>
                 </Route>
