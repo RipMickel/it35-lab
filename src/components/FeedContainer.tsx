@@ -53,7 +53,6 @@ const FeedContainer = () => {
   const createPost = async () => {
     if (!postContent || !user || !username) return;
 
-    // Fetch avatar URL
     const { data: userData, error: userError } = await supabase
       .from('users')
       .select('user_avatar_url')
@@ -67,7 +66,6 @@ const FeedContainer = () => {
 
     const avatarUrl = userData?.user_avatar_url || 'https://ionicframework.com/docs/img/demos/avatar.svg';
 
-    // Insert post with avatar URL
     const { data, error } = await supabase
       .from('posts')
       .insert([ { post_content: postContent, user_id: user.id, username, avatar_url: avatarUrl } ])
@@ -110,126 +108,137 @@ const FeedContainer = () => {
 
   return (
     <>
-    <IonContent>
-      {user ? (
-        <>
-          <IonCard>
-            <IonCardHeader>
-              <IonCardTitle>Create Post</IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-              <IonInput
-                value={postContent}
-                onIonChange={e => setPostContent(e.detail.value!)}
-                placeholder="Write a post..."
-              />
-            </IonCardContent>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.5rem' }}>
-              <IonButton onClick={createPost}>Post</IonButton>
-            </div>
-          </IonCard>
-
-          {posts.map(post => (
-            <IonCard key={post.post_id} style={{ marginTop: '2rem' }}>
-              <IonCardHeader>
-                <IonRow>
-                  <IonCol size="1.85">
-                    <IonAvatar>
-                      <img alt={post.username} src={post.avatar_url} />
-                    </IonAvatar>
-                  </IonCol>
-                  <IonCol>
-                    <IonCardTitle style={{ marginTop: '10px' }}>{post.username}</IonCardTitle>
-                    <IonCardSubtitle>{new Date(post.post_created_at).toLocaleString()}</IonCardSubtitle>
-                  </IonCol>
-                  <IonCol size="auto">
-                    <IonButton
-                      fill="clear"
-                      onClick={(e) =>
-                        setPopoverState({
-                          open: true,
-                          event: e.nativeEvent,
-                          postId: post.post_id,
-                        })
-                      }
-                    >
-                      <IonIcon color="secondary" icon={pencil} />
-                    </IonButton>
-                  </IonCol>
-                </IonRow>
-              </IonCardHeader>
-
-              <IonCardContent>
-                <IonText style={{ color: 'black' }}>
-                  <h1>{post.post_content}</h1>
-                </IonText>
-              </IonCardContent>
-
-              <IonPopover
-                isOpen={popoverState.open && popoverState.postId === post.post_id}
-                event={popoverState.event}
-                onDidDismiss={() =>
-                  setPopoverState({ open: false, event: null, postId: null })
-                }
-              >
-                <IonButton
-                  fill="clear"
-                  onClick={() => {
-                    startEditingPost(post);
-                    setPopoverState({ open: false, event: null, postId: null });
-                  }}
-                >
-                  Edit
-                </IonButton>
-                <IonButton
-                  fill="clear"
-                  color="danger"
-                  onClick={() => {
-                    deletePost(post.post_id);
-                    setPopoverState({ open: false, event: null, postId: null });
-                  }}
-                >
-                  Delete
-                </IonButton>
-              </IonPopover>
-            </IonCard>
-          ))}
-        </>
-      ) : (
-        <IonLabel>Loading...</IonLabel>
-      )}
-    </IonContent>
-
-    <IonModal isOpen={isModalOpen} onDidDismiss={() => setIsModalOpen(false)}>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Edit Post</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
-        <IonInput
-          value={postContent}
-          onIonChange={e => setPostContent(e.detail.value!)}
-          placeholder="Edit your post..."
-        />
+        {user ? (
+          <>
+            {/* Create Post Section */}
+            <IonCard style={{ borderRadius: '15px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+              <IonCardHeader style={{ padding: '15px' }}>
+                <IonCardTitle style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>What's happening?</IonCardTitle>
+              </IonCardHeader>
+              <IonCardContent>
+                <IonInput
+                  value={postContent}
+                  onIonChange={e => setPostContent(e.detail.value!)}
+                  placeholder="What's on your mind?"
+                  style={{ width: '100%', borderRadius: '10px', padding: '10px', marginBottom: '10px' }}
+                />
+              </IonCardContent>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.5rem' }}>
+                <IonButton
+                  onClick={createPost}
+                  style={{ backgroundColor: '#1DA1F2', color: 'white', borderRadius: '20px' }}
+                >
+                  Post
+                </IonButton>
+              </div>
+            </IonCard>
+
+            {/* Posts List */}
+            {posts.map(post => (
+              <IonCard key={post.post_id} style={{ marginTop: '1rem', borderRadius: '15px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+                <IonCardHeader style={{ padding: '15px' }}>
+                  <IonRow>
+                    <IonCol size="1.85">
+                      <IonAvatar>
+                        <img alt={post.username} src={post.avatar_url} />
+                      </IonAvatar>
+                    </IonCol>
+                    <IonCol>
+                      <IonCardTitle style={{ fontWeight: 'bold', fontSize: '1rem' }}>{post.username}</IonCardTitle>
+                      <IonCardSubtitle style={{ fontSize: '0.85rem', color: 'gray' }}>
+                        {new Date(post.post_created_at).toLocaleString()}
+                      </IonCardSubtitle>
+                    </IonCol>
+                    <IonCol size="auto">
+                      <IonButton
+                        fill="clear"
+                        onClick={(e) =>
+                          setPopoverState({
+                            open: true,
+                            event: e.nativeEvent,
+                            postId: post.post_id,
+                          })
+                        }
+                      >
+                        <IonIcon color="primary" icon={pencil} />
+                      </IonButton>
+                    </IonCol>
+                  </IonRow>
+                </IonCardHeader>
+
+                <IonCardContent>
+                  <IonText style={{ color: 'black' }}>
+                    <p>{post.post_content}</p>
+                  </IonText>
+                </IonCardContent>
+
+                <IonPopover
+                  isOpen={popoverState.open && popoverState.postId === post.post_id}
+                  event={popoverState.event}
+                  onDidDismiss={() =>
+                    setPopoverState({ open: false, event: null, postId: null })
+                  }
+                >
+                  <IonButton
+                    fill="clear"
+                    onClick={() => {
+                      startEditingPost(post);
+                      setPopoverState({ open: false, event: null, postId: null });
+                    }}
+                  >
+                    Edit
+                  </IonButton>
+                  <IonButton
+                    fill="clear"
+                    color="danger"
+                    onClick={() => {
+                      deletePost(post.post_id);
+                      setPopoverState({ open: false, event: null, postId: null });
+                    }}
+                  >
+                    Delete
+                  </IonButton>
+                </IonPopover>
+              </IonCard>
+            ))}
+          </>
+        ) : (
+          <IonLabel>Loading...</IonLabel>
+        )}
       </IonContent>
-      <IonFooter>
-        <IonButton onClick={savePost}>Save</IonButton>
-        <IonButton onClick={() => setIsModalOpen(false)}>Cancel</IonButton>
-      </IonFooter>
-    </IonModal>
 
-    <IonAlert
-      isOpen={isAlertOpen}
-      onDidDismiss={() => setIsAlertOpen(false)}
-      header="Success"
-      message="Post updated successfully!"
-      buttons={['OK']}
-    />
-  </>
-);
+      {/* Edit Post Modal */}
+      <IonModal isOpen={isModalOpen} onDidDismiss={() => setIsModalOpen(false)}>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Edit Post</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <IonInput
+            value={postContent}
+            onIonChange={e => setPostContent(e.detail.value!)}
+            placeholder="Edit your post..."
+            style={{ padding: '10px', borderRadius: '10px' }}
+          />
+        </IonContent>
+        <IonFooter style={{ padding: '10px' }}>
+          <IonButton onClick={savePost}>Save</IonButton>
+          <IonButton onClick={() => setIsModalOpen(false)}>Cancel</IonButton>
+        </IonFooter>
+      </IonModal>
 
-
+      {/* Success Alert */}
+      <IonAlert
+        isOpen={isAlertOpen}
+        onDidDismiss={() => setIsAlertOpen(false)}
+        header="Success"
+        message="Post updated successfully!"
+        buttons={['OK']}
+      />
+    </>
+  );
 };
 
 export default FeedContainer;

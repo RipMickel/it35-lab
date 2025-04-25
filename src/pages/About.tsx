@@ -44,8 +44,8 @@ import { personCircleOutline, codeSlashOutline, mailOutline, logoGithub, logoLin
     }}
   />
   <IonCardTitle>RipMickel</IonCardTitle>
-  <p>Wanna be App Developer</p>
-</IonCardHeader>
+  <p style={{ marginTop: '78px' }}>Wanna be App Developer</p>
+  </IonCardHeader>
 
                     <IonCardContent>
                     Passionate about building efficient and scalable applications.  
