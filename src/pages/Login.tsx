@@ -37,7 +37,7 @@ const Login: React.FC = () => {
     setShowToast(true);
 
     setTimeout(() => {
-      navigation.push('/it35-lab/app', 'forward', 'replace');
+      navigation.push('/app', 'forward', 'replace');
     }, 300);
   };
 
